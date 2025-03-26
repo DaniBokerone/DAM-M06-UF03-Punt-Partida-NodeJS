@@ -2,9 +2,10 @@
   "name": "exemple-mongodb",
   "version": "1.0.0",
   "description": "Exemple de càrrega d'XML a MongoDB",
-  "main": "src/load-xml-to-mongodb.js",
+  "main": "src/exercici1.js",
   "scripts": {
-    "start": "node src/load-xml-to-mongodb.js",
+    "start": "node src/exercici1.js",
+    "exercici2": "node src/exercici2.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -18,6 +19,8 @@
     "dotenv": "^16.0.3",
     "exemple-mongodb": "file:",
     "mongodb": "^5.1.0",
+    "pdfkit": "^0.16.0",
+    "winston": "^3.17.0",
     "xml2js": "^0.5.0"
   }
 }
