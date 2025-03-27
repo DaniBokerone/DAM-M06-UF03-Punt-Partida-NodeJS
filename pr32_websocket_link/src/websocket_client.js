@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { randomUUID } = require('crypto');
 
 const WebSocket = require('ws');
 const readline = require('readline');
@@ -8,7 +9,7 @@ const SERVER_URL = process.env.SERVER_URL || 'ws://localhost:8000';
 
 const ws = new WebSocket(SERVER_URL);
 
-let player = { x: 0, y: 0 };
+let player = { id:"player_"+randomUUID(), x: 0, y: 0 };
 
 // Recoger el pulsado de teclas
 readline.emitKeypressEvents(process.stdin);
@@ -17,7 +18,6 @@ process.stdin.setRawMode(true);
 
 ws.on('open', () => {
     console.log('Conectado al servidor WebSocket');
-    ws.send('Hola, server');
 
     process.stdin.on('keypress', (str, key) => {
         if (key.name === 'up') player.y--;
@@ -28,7 +28,7 @@ ws.on('open', () => {
         // Enviar la nueva posición al servidor
         const message = JSON.stringify(
             {
-             type: 'move', position: player 
+             type: 'move', player: player 
             });
         ws.send(message);
 
